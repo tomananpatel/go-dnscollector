@@ -175,6 +175,7 @@ RUN_LOOP:
 				Tags:                  []string{},
 				OriginalRequestSubnet: "",
 				AppliedPolicy:         "",
+				AppliedPolicyTrigger:  "",
 				Metadata:              map[string]string{},
 			}
 
@@ -251,6 +252,9 @@ RUN_LOOP:
 
 			// get PowerDNS policy applied
 			pdns.AppliedPolicy = pbdm.GetResponse().GetAppliedPolicy()
+
+			// get PowerDNS policy applied policy trigger
+			pdns.AppliedPolicyTrigger = pbdm.GetResponse().GetAppliedPolicyTrigger()
 
 			// get PowerDNS metadata
 			metas := make(map[string]string)

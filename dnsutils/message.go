@@ -141,6 +141,7 @@ type PowerDNS struct {
 	Tags                  []string          `json:"tags" msgpack:"tags"`
 	OriginalRequestSubnet string            `json:"original-request-subnet" msgpack:"original-request-subnet"`
 	AppliedPolicy         string            `json:"applied-policy" msgpack:"applied-policy"`
+	AppliedPolicyTrigger  string            `json:"applied-policy-trigger" msgpack:"applied-policy-trigger"`
 	Metadata              map[string]string `json:"metadata" msgpack:"metadata"`
 }
 
@@ -314,6 +315,12 @@ func (dm *DNSMessage) handlePdnsDirectives(directives []string, s *strings.Build
 		case directive == "powerdns-applied-policy":
 			if len(dm.PowerDNS.AppliedPolicy) > 0 {
 				s.WriteString(dm.PowerDNS.AppliedPolicy)
+			} else {
+				s.WriteString("-")
+			}
+		case directive == "powerdns-applied-policy-trigger":
+			if len(dm.PowerDNS.AppliedPolicyTrigger) > 0 {
+				s.WriteString(dm.PowerDNS.AppliedPolicyTrigger)
 			} else {
 				s.WriteString("-")
 			}
