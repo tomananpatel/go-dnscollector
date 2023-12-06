@@ -176,6 +176,9 @@ RUN_LOOP:
 				OriginalRequestSubnet: "",
 				AppliedPolicy:         "",
 				AppliedPolicyTrigger:  "",
+				AppliedPolicyType:     "",
+				AppliedPolicyHit:      "",
+				AppliedPolicyKind:     "",
 				Metadata:              map[string]string{},
 			}
 
