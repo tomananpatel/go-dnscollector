@@ -1,0 +1,37 @@
+This needs to be built to run on target platform RHEL 9.
+
+ Launch an EC2 instance with RHEL 9 and of size t2.medium.
+
+ssh to the EC2 instance execute the followings I order to install go lang, Clone the forked go dnscollector repo and build the binary.
+
+
+
+sudo yum update -y
+sudo yum install git wget nano make -y
+
+wget https://go.dev/dl/go1.21.5.linux-amd64.tar.gz
+
+sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.21.5.linux-amd64.tar.gz
+
+export PATH=$PATH:/usr/local/go/bin
+
+go version
+
+
+git clone https://github.com/tomananpatel/go-dnscollector.git
+
+cd go-dnscollector/
+
+nano -c MakeFile
+
+And remove dnscollector.go  from line 42. And Save the changes.
+
+
+make build
+make tests
+make run
+
+Make sure that dns collector programme runs successfully and listen on port 6000
+
+
+
